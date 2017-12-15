@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.andrewahn.booksearch.ui.MainActivity">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.andrewahn.booksearch.ui.viewmodels.BookSearchViewModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_search_layout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="8dp">
+
+            <EditText
+                android:id="@+id/input_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_search"
+                android:text="@={vm.query}" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/search_button"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/input_search_layout"
+            android:layout_centerHorizontal="true"
+            android:onClick="@{vm::onSearchClick}"
+            android:text="@string/search_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/input_search_layout" />
+
+
+        <TextView
+            android:id="@+id/book_count_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/book_count_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_button" />
+
+        <TextView
+            android:id="@+id/book_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.bookCount}"
+            app:layout_constraintLeft_toRightOf="@id/book_count_title"
+            app:layout_constraintTop_toBottomOf="@id/search_button"
+            tools:text="100" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            bind:recyclerViewViewModel="@{vm}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/book_count_title"
+            android:layout_marginTop="8dp"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/book_count_title" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

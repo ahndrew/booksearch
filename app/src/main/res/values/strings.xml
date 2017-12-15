@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Book Search</string>
+
+    <string name="hint_search">Search Books</string>
+    <string name="search_button">Search</string>
+
+    <string name="book_count_title">Number of Books:</string>
+
+    <item name="visible" type="id"/>
+    <item name="masked" type="id"/>
+</resources>
